@@ -2,6 +2,7 @@ import os
 import sys
 import modules.gui as gui
 
+
 # Namespaces for the most important elements.
 class Player:
     width = int(5)
@@ -9,13 +10,16 @@ class Player:
     x = int(0)
     y = int(0)
 
+
 class Window:
     width = int(80)
     height = int(24)
 
+
 class Map:
     width = int(Window.width - 2)
     height = int(Window.height - 2)
+
 
 def size(axis):
     width, height = os.get_terminal_size()
@@ -25,34 +29,38 @@ def size(axis):
         print("Terminal size must >= 80x24.")
         exit(1)
 
-    elif height >= Window.height: # Centering values.
+    elif height >= Window.height:  # Centering values.
         if axis == "horizontal":
             return int((width - Window.width) / 2)
 
         elif axis == "vertical":
             return int((height - Window.height) / 2)
 
-        elif axis == "height": # Whole terminal height.
+        elif axis == "height":  # Whole terminal height.
             return height
 
-def emptyLine(): # X centered line with borders only.
+
+def emptyLine():  # X centered line with borders only.
     for x in range(size("horizontal")):
         sys.stdout.write(' ')
 
     sys.stdout.write('|')
-    for x in range(Map.width): # Rendering empty X axis.
+    for x in range(Map.width):  # Rendering empty X axis.
         sys.stdout.write(' ')
     sys.stdout.write('|\n')
+
 
 def flushFrame():
     for y in range(size("height")):
         gui.clear_line()
     sys.stdout.flush()
 
+
 class Center:
     def __init__(self, axis, lastChar):
         for x in range(size(axis)):
             sys.stdout.write(lastChar)
+
 
 class Fill:
     def vertically():
@@ -70,29 +78,30 @@ class Fill:
         Center("horizontal", ' ')
         Fill.vertically()
 
-def window(x, y): # Main window of the game.
+
+def window(x, y):  # Main window of the game.
     Fill.upper()
     # Player positioning in Y axis:
-    for i in range(Player.y): # Amount of X axes to render above him.
+    for y in range(Player.y):  # Amount of X axes to render above him.
         emptyLine()
 
     # Player positioning in X axis and rendering:
-    for i in range(Player.height):
+    for y in range(Player.height):
         Center("horizontal", ' ')
 
-        sys.stdout.write('|') # Left border.
-        for i in range(Player.x):
-            sys.stdout.write(' ') # Spaces without newlines as positioning.
+        sys.stdout.write('|')  # Left border.
+        for x in range(Player.x):
+            sys.stdout.write(' ')  # Spaces without newlines as positioning.
 
-        player = gui.Model(gui.Color.green + "[*;*]" + gui.Color.reset,
-        Player.width, Player.height)
+        gui.Model(gui.Color.yellow + "[*;*]" + gui.Color.reset, Player.width,
+                  Player.height)
 
-        for i in range(Map.width - Player.x - Player.width):
-            sys.stdout.write(' ') # Spaces at the right side of the Player...
-        sys.stdout.write('|\n') # ...to set position of this border properly.
+        for x in range(Map.width - Player.x - Player.width):
+            sys.stdout.write(' ')  # Spaces at the right side of the Player...
+        sys.stdout.write("|\n")  # ...to set position of this border properly.
 
     # Horizontal areas (X axes) below the Player:
-    for i in range(Map.height - Player.y - Player.height):
+    for y in range(Map.height - Player.y - Player.height):
         emptyLine()
 
     Fill.lower()

@@ -6,8 +6,8 @@
 # I can occasionally do some fixes but generally the project is discontinued
 # due the my Git experiments. Do what do you want with that. The only thing to
 # do is add map because now it's empty. Development lasted from 2018-04-26 to
-# 2018-05-26 with few breaks. Refactored in late 2019. Whole rendering has been
-# written in the clear Python 3 - without curses/ncurses modules.
+# 2018-05-26 with few breaks. A little refactored in late 2019. Whole rendering
+# was written in the clear Python 3 - without curses/ncurses modules.
 
 # Workflow
 # There is only one branch: master. Generally everything should be stable.
