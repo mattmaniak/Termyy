@@ -40,7 +40,7 @@ def size(axis):
             return height
 
 
-def emptyLine():  # X centered line with borders only.
+def empty_line():  # X centered line with borders only.
     for x in range(size("horizontal")):
         sys.stdout.write(' ')
 
@@ -83,7 +83,7 @@ def window(x, y):  # Main window of the game.
     Fill.upper()
     # Player positioning in Y axis:
     for y in range(Player.y):  # Amount of X axes to render above him.
-        emptyLine()
+        empty_line()
 
     # Player positioning in X axis and rendering:
     for y in range(Player.height):
@@ -102,6 +102,6 @@ def window(x, y):  # Main window of the game.
 
     # Horizontal areas (X axes) below the Player:
     for y in range(Map.height - Player.y - Player.height):
-        emptyLine()
+        empty_line()
 
     Fill.lower()
