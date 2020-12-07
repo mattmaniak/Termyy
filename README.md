@@ -1,4 +1,4 @@
-# <img src='icon.png' width='32'> termyy
+# <img src='icon.png' width='32'> Termyy
 Move around freely in the terminal-rendered square.
 
 ## Info
