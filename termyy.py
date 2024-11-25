@@ -9,9 +9,9 @@ import modules.render
 
 
 def game(mode, play_button_text):
-    while 1:
+    while True:
         modules.menu.welcome(mode, play_button_text)
-        if modules.controls.key_event("menu") == 1:
+        if modules.controls.key_event("menu"):
             round()
         modules.render.flushFrame()
 
@@ -19,8 +19,8 @@ def game(mode, play_button_text):
 def round():
     while 1:
         modules.render.window(modules.render.Player.x, modules.render.Player.y)
-        if modules.controls.key_event("game") == 1:
-            while 1:
+        if modules.controls.key_event("game"):
+            while True:
                 game("               Game paused! ", " Continue game")
         modules.render.flushFrame()
 
