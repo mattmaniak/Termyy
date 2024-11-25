@@ -1,6 +1,7 @@
 import os
 import sys
-import modules.gui as gui
+
+import modules.gui
 
 
 # Namespaces for the most important elements.
@@ -52,7 +53,7 @@ def empty_line():  # X centered line with borders only.
 
 def flushFrame():
     for y in range(size("height")):
-        gui.clear_line()
+        modules.gui.clear_line()
     sys.stdout.flush()
 
 
@@ -70,11 +71,11 @@ class Fill:
     def upper():
         Center("vertical", '\n')
         Center("horizontal", ' ')
-        gui.horizontal_border("+\n")
+        modules.gui.horizontal_border("+\n")
 
     def lower():
         Center("horizontal", ' ')
-        gui.horizontal_border('+')
+        modules.gui.horizontal_border('+')
         Center("horizontal", ' ')
         Fill.vertically()
 
@@ -93,8 +94,9 @@ def window(x, y):  # Main window of the game.
         for x in range(Player.x):
             sys.stdout.write(' ')  # Spaces without newlines as positioning.
 
-        gui.Model(gui.Color.yellow + "[*;*]" + gui.Color.reset, Player.width,
-                  Player.height)
+        modules.gui.Model(modules.gui.Color.yellow + "[*;*]"
+                          + modules.gui.Color.reset,
+                          Player.width, Player.height)
 
         for x in range(Map.width - Player.x - Player.width):
             sys.stdout.write(' ')  # Spaces at the right side of the Player...
