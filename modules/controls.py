@@ -75,10 +75,10 @@ def game_event(pressed_key):
 def key_event(type):  # https://code.activestate.com/recipes/134892/
     file_descriptor = sys.stdin.fileno()
     old_settings = termios.tcgetattr(file_descriptor)
+
     try:
         tty.setraw(sys.stdin.fileno())
         pressed_key = sys.stdin.read(1)
-
     finally:
         termios.tcsetattr(file_descriptor, termios.TCSADRAIN, old_settings)
 
