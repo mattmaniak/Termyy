@@ -6,6 +6,7 @@ import modules.gui
 
 # Namespaces for the most important elements.
 class Player:
+    model = str("[*;*]")
     width = int(5)
     height = int(1)
     x = int(0)
@@ -27,7 +28,7 @@ def size(axis):
     width, height = int(width), int(height)
 
     if width < Window.width or height < Window.height:
-        print("Terminal size must >= 80x24.")
+        print("Terminal size must >= 80x24 characters of size.")
         exit(1)
 
     elif height >= Window.height:  # Centering values.
@@ -44,8 +45,8 @@ def size(axis):
 def empty_line():  # X centered line with borders only.
     for x in range(size("horizontal")):
         sys.stdout.write(' ')
-
     sys.stdout.write('|')
+
     for x in range(Map.width):  # Rendering empty X axis.
         sys.stdout.write(' ')
     sys.stdout.write('|\n')
@@ -94,7 +95,7 @@ def window(x, y):  # Main window of the game.
         for x in range(Player.x):
             sys.stdout.write(' ')  # Spaces without newlines as positioning.
 
-        modules.gui.Model(modules.gui.Color.yellow + "[*;*]"
+        modules.gui.Model(modules.gui.Color.yellow + Player.model
                           + modules.gui.Color.reset,
                           Player.width, Player.height)
 
