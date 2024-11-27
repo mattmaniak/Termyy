@@ -17,16 +17,16 @@ class Chars:
 
 def menu_event(pressed_key):
     if pressed_key in Chars.w:  # Y axis is inverted in comparison to math.
-        if modules.menu.selected_button <= 1:
-            modules.menu.selected_button = 1
-        else:
+        if modules.menu.selected_button > 1:
             modules.menu.selected_button -= 1
+        else:
+            modules.menu.selected_button = 1
 
     elif pressed_key in Chars.s:
-        if modules.menu.selected_button >= 2:
-            modules.menu.selected_button = 2
-        else:
+        if modules.menu.selected_button < 2:
             modules.menu.selected_button += 1
+        else:
+            modules.menu.selected_button = 2
 
     elif modules.menu.selected_button == 1 and ord(pressed_key) == Chars.enter:
         modules.render.flushFrame()  # New game button.
