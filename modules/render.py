@@ -6,26 +6,26 @@ import modules.gui
 
 # Namespaces for the most important elements.
 class Player:
-    model = str("[*;*]")
-    width = int(5)
-    height = int(1)
-    x = int(0)
-    y = int(0)
+    model = "[*;*]"
+    width = len(model)
+    height = 1
+    x = 0
+    y = 0
 
 
 class Window:
-    width = int(80)
-    height = int(24)
+    width = 80
+    height = 24
 
 
 class Map:
-    width = int(Window.width - 2)
-    height = int(Window.height - 2)
+    __borders_size = 2
+    width = Window.width - __borders_size
+    height = Window.height - __borders_size
 
 
 def size(axis):
     width, height = os.get_terminal_size()
-    width, height = int(width), int(height)
 
     if width < Window.width or height < Window.height:
         print("Terminal size must >= 80x24 characters of size.")
@@ -33,13 +33,15 @@ def size(axis):
 
     elif height >= Window.height:  # Centering values.
         if axis == "horizontal":
-            return int((width - Window.width) / 2)
+            size = (width - Window.width) / 2
 
         elif axis == "vertical":
-            return int((height - Window.height) / 2)
+            size = (height - Window.height) / 2
 
         elif axis == "height":  # Whole terminal height.
-            return height
+            size = height
+
+    return int(size)
 
 
 def empty_line():  # X centered line with borders only.
