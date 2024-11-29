@@ -78,7 +78,8 @@ def welcome(mode, play_button_text):  # Main menu.
                       + " the game."
 
         Button(0, button_text, len(button_text),
-               int((modules.render.Window.width - len(button_text)) / 2))
+               modules.render.Window.
+               count_centered_object_vertical_padding(len(button_text)))
 
     elif mode == "               Game paused! ":  # Pause screen.
         for i in range(2):

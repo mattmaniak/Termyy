@@ -17,6 +17,9 @@ class Window:
     width = 80
     height = 24
 
+    def count_centered_object_vertical_padding(obj_width):
+        return int((Window.width - obj_width) / 2)
+
 
 class Map:
     __borders_size = 2
