@@ -74,9 +74,11 @@ def welcome(mode, play_button_text):  # Main menu.
     if mode == "Termyy":  # After-game-started screen.
         modules.render.empty_line()  # - upper position (15) = 2.
 
-        Button(0,
-               "Use 'w', 's', 'a', 'd' as arrows, SHIFT+P to pause the game.",
-               60, 10)
+        button_text = "Use 'w', 's', 'a', 'd' as arrows, SHIFT+P to pause" \
+                      + " the game."
+
+        Button(0, button_text, len(button_text),
+               int((modules.render.Window.width - len(button_text)) / 2))
 
     elif mode == "               Game paused! ":  # Pause screen.
         for i in range(2):
