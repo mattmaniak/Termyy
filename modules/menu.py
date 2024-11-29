@@ -6,9 +6,18 @@ import modules.render
 
 
 selected_button = 1  # Selected button ID. "New game" by default.
-quotes = ("           ~ Find the text.", "      ~ You have much time.",
-          "      ~ This area is small.")  # Random quotes as subtitle.
-quote = quotes[random.randrange(len(quotes))]
+quote_frame_width = 27
+
+# Random quotes as a subtitle.
+quote_prefix = "~ "
+quote_sufix = '.'
+quotes = ["Find the text", "You have much time", "This area is small"]
+
+for idx in range(len(quotes)):
+    quotes[idx] = quote_prefix + quotes[idx] + quote_sufix
+    quotes[idx] = quotes[idx].rjust(quote_frame_width, ' ')
+
+quote_frame = quotes[random.randrange(len(quotes))]
 
 
 class Button:
@@ -41,7 +50,7 @@ class Button:
 
 
 def welcome(mode, play_button_text):  # Main menu.
-    global selected_button, quote
+    global selected_button, quote_frame
 
     modules.render.Fill.upper()
     for y in range(10):  # Position from up (Y axis).
@@ -50,7 +59,7 @@ def welcome(mode, play_button_text):  # Main menu.
     if mode == "Termyy":
         Button(0, mode, len(mode),
                int(modules.render.Map.width / 2) - int(len(mode) / 2))
-        Button(selected_button, quote, 28, 25)
+        Button(selected_button, quote_frame, 28, 25)
 
     elif mode == "               Game paused! ":
         modules.render.empty_line()
