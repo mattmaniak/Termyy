@@ -52,24 +52,32 @@ class Button:
 def welcome(mode, play_button_text):  # Main menu.
     global selected_button, quote_frame
 
+    infobox_width = 28
+    menu_button_width = 20
+    menu_button_height = 5
+
     modules.render.Fill.upper()
+
     for y in range(10):  # Position from up (Y axis).
         modules.render.empty_line()
 
     if mode == "Termyy":
         Button(0, mode, len(mode),
                int(modules.render.Map.width / 2) - int(len(mode) / 2))
-        Button(selected_button, quote_frame, 28, 25)
+        Button(selected_button, quote_frame, infobox_width,
+               modules.render.Window.
+               count_centered_object_vertical_padding(infobox_width))
 
     elif mode == "               Game paused! ":
         modules.render.empty_line()
-        Button(selected_button, mode, 28, 25)
+        Button(selected_button, mode, infobox_width, modules.render.Window.
+               count_centered_object_vertical_padding(infobox_width))
 
     for i in range(6):  # Position from up (Y axis).
         modules.render.empty_line()
 
-    Button(1, play_button_text, 20, 5)
-    Button(2, " Exit", 20, 5)
+    Button(1, play_button_text, menu_button_width, menu_button_height)
+    Button(2, " Exit", menu_button_width, menu_button_height)
 
     if mode == "Termyy":  # After-game-started screen.
         modules.render.empty_line()  # - upper position (15) = 2.
