@@ -49,7 +49,7 @@ class Button:
         sys.stdout.write("|\n")
 
 
-def welcome(mode, play_button_text):  # Main menu.
+def welcome(mode):  # Main menu.
     global selected_button, quote_frame
 
     infobox_width = 28
@@ -76,7 +76,11 @@ def welcome(mode, play_button_text):  # Main menu.
     for i in range(6):  # Position from up (Y axis).
         modules.render.empty_line()
 
-    Button(1, play_button_text, menu_button_width, menu_button_height)
+    if mode == "Termyy":
+        Button(1, " New Game", menu_button_width, menu_button_height)
+    elif mode == "               Game paused! ":
+        Button(1, " Continue Game", menu_button_width, menu_button_height)
+
     Button(2, " Exit", menu_button_width, menu_button_height)
 
     if mode == "Termyy":  # After-game-started screen.

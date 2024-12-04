@@ -8,9 +8,9 @@ import modules.controls
 import modules.render
 
 
-def game(mode, play_button_text):
+def game(mode):
     while True:
-        modules.menu.welcome(mode, play_button_text)
+        modules.menu.welcome(mode)
 
         if modules.controls.key_event("menu"):
             round()
@@ -23,7 +23,7 @@ def round():
 
         if modules.controls.key_event("game"):
             while True:
-                game("               Game paused! ", " Continue game")
+                game("               Game paused! ")
         modules.render.flushFrame()
 
 
@@ -32,6 +32,6 @@ if __name__ == "__main__":
         sys.stderr.write("Your OS is not supported!\n")
         exit(1)
 
-    game("Termyy", " New game")
+    game("Termyy")
 else:
     sys.stderr.write("Do not import this file as a module. Run it directly.\n")
