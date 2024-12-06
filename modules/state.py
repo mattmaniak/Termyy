@@ -2,5 +2,6 @@ import enum
 
 
 class Screens(enum.Enum):
-    MAIN_MENU = 1
-    PAUSE_MENU = 2
+    GAMEPLAY = 1
+    MAIN_MENU = 2
+    PAUSE_MENU = 3

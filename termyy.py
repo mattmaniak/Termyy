@@ -12,7 +12,7 @@ def game(mode):
     while True:
         modules.menu.welcome(mode)
 
-        if modules.controls.key_event("menu"):
+        if modules.controls.key_event(modules.state.Screens.PAUSE_MENU):
             round()
         modules.render.flushFrame()
 
@@ -21,7 +21,7 @@ def round():
     while True:
         modules.render.window(modules.render.Player.x, modules.render.Player.y)
 
-        if modules.controls.key_event("game"):
+        if modules.controls.key_event(modules.state.Screens.GAMEPLAY):
             while True:
                 game(modules.state.Screens.PAUSE_MENU)
         modules.render.flushFrame()

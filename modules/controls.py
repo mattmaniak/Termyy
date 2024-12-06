@@ -82,7 +82,8 @@ def key_event(type):  # https://code.activestate.com/recipes/134892/
     finally:
         termios.tcsetattr(file_descriptor, termios.TCSADRAIN, old_settings)
 
-    if type == "menu":
+    if type == modules.state.Screens.MAIN_MENU \
+            or type == modules.state.Screens.PAUSE_MENU:
         return menu_event(pressed_key)
-    elif type == "game":
+    elif type == modules.state.Screens.GAMEPLAY:
         return game_event(pressed_key)
