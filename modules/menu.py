@@ -2,6 +2,7 @@ import random
 import sys
 
 import modules.gui
+import modules.state
 import modules.render
 
 
@@ -61,29 +62,31 @@ def welcome(mode):  # Main menu.
     for y in range(10):  # Position from up (Y axis).
         modules.render.empty_line()
 
-    if mode == "Termyy":
-        Button(0, mode, len(mode),
-               int(modules.render.Map.width / 2) - int(len(mode) / 2))
+    if mode == modules.state.Screens.MAIN_MENU:
+        Button(0, "Termyy", len("Termyy"),
+               int(modules.render.Map.width / 2) - int(len("Termyy") / 2))
+
         Button(selected_button, quote_frame, infobox_width,
                modules.render.Window.
                count_centered_object_vertical_padding(infobox_width))
 
-    elif mode == "               Game paused! ":
+    elif mode == modules.state.Screens.PAUSE_MENU:
         modules.render.empty_line()
-        Button(selected_button, mode, infobox_width, modules.render.Window.
+        Button(selected_button, "               Game paused! ", infobox_width,
+               modules.render.Window.
                count_centered_object_vertical_padding(infobox_width))
 
     for i in range(6):  # Position from up (Y axis).
         modules.render.empty_line()
 
-    if mode == "Termyy":
+    if mode == modules.state.Screens.MAIN_MENU:
         Button(1, " New Game", menu_button_width, menu_button_height)
-    elif mode == "               Game paused! ":
+    elif mode == modules.state.Screens.PAUSE_MENU:
         Button(1, " Continue Game", menu_button_width, menu_button_height)
 
     Button(2, " Exit", menu_button_width, menu_button_height)
 
-    if mode == "Termyy":  # After-game-started screen.
+    if mode == modules.state.Screens.MAIN_MENU:  # After-game-started screen.
         modules.render.empty_line()  # - upper position (15) = 2.
 
         button_text = "Use 'w', 's', 'a', 'd' as arrows, SHIFT+P to pause" \
@@ -93,7 +96,7 @@ def welcome(mode):  # Main menu.
                modules.render.Window.
                count_centered_object_vertical_padding(len(button_text)))
 
-    elif mode == "               Game paused! ":  # Pause screen.
+    elif mode == modules.state.Screens.PAUSE_MENU:  # Pause screen.
         for i in range(2):
             modules.render.empty_line()
 

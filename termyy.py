@@ -23,7 +23,7 @@ def round():
 
         if modules.controls.key_event("game"):
             while True:
-                game("               Game paused! ")
+                game(modules.state.Screens.PAUSE_MENU)
         modules.render.flushFrame()
 
 
@@ -32,6 +32,6 @@ if __name__ == "__main__":
         sys.stderr.write("Your OS is not supported!\n")
         exit(1)
 
-    game("Termyy")
+    game(modules.state.Screens.MAIN_MENU)
 else:
     sys.stderr.write("Do not import this file as a module. Run it directly.\n")
