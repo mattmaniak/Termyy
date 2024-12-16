@@ -61,7 +61,7 @@ def game_event(pressed_key):
 
     elif pressed_key in Chars.d:
         if modules.render.Player.x >= modules.render.Map.width \
-                - modules.render.Player.width:
+                                      - modules.render.Player.width:
             modules.render.Player.x = modules.render.Map.width \
                                       - modules.render.Player.width
         else:
@@ -72,7 +72,8 @@ def game_event(pressed_key):
         return True
 
 
-def key_event(type):  # https://code.activestate.com/recipes/134892/
+# https://code.activestate.com/recipes/134892/
+def key_event(type):
     file_descriptor = sys.stdin.fileno()
     old_settings = termios.tcgetattr(file_descriptor)
 

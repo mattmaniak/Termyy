@@ -50,7 +50,8 @@ class Button:
         sys.stdout.write("|\n")
 
 
-def welcome(mode):  # Main menu.
+# Main menu.
+def welcome(mode):
     global selected_button, quote_frame
 
     infobox_width = 28

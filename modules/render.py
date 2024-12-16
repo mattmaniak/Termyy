@@ -88,6 +88,7 @@ class Fill:
 
 def window(x, y):  # Main window of the game.
     Fill.upper()
+
     # Player positioning in Y axis:
     for y in range(Player.y):  # Amount of X axes to render above him.
         empty_line()
@@ -105,8 +106,11 @@ def window(x, y):  # Main window of the game.
                           Player.width, Player.height)
 
         for x in range(Map.width - Player.x - Player.width):
-            sys.stdout.write(' ')  # Spaces at the right side of the Player...
-        sys.stdout.write("|\n")  # ...to set position of this border properly.
+            # Spaces at the right side of the Player...
+            sys.stdout.write(' ')
+
+        # ...to set position of this border properly.
+        sys.stdout.write("|\n")
 
     # Horizontal areas (X axes) below the Player:
     for y in range(Map.height - Player.y - Player.height):
