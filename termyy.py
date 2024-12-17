@@ -3,18 +3,21 @@
 import os
 import sys
 
-import modules.menu
 import modules.controls
+import modules.menu
 import modules.render
 
 
 def game(mode):
     while True:
-        modules.menu.welcome(mode)
+        if not modules.render.skip_next_frame_rendering:
+            modules.menu.welcome(mode)
 
         if modules.controls.key_event(modules.state.Screens.PAUSE_MENU):
             round()
-        modules.render.flushFrame()
+
+        if not modules.render.skip_next_frame_rendering:
+            modules.render.flushFrame()
 
 
 def round():

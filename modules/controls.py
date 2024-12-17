@@ -19,16 +19,22 @@ def menu_event(pressed_key):
     if pressed_key in Chars.w:  # Y axis is inverted in comparison to math.
         if modules.menu.selected_button > 1:
             modules.menu.selected_button -= 1
+            modules.render.skip_next_frame_rendering = False
         else:
             modules.menu.selected_button = 1
+            modules.render.skip_next_frame_rendering = True
 
     elif pressed_key in Chars.s:
         if modules.menu.selected_button < 2:
             modules.menu.selected_button += 1
+            modules.render.skip_next_frame_rendering = False
         else:
             modules.menu.selected_button = 2
+            modules.render.skip_next_frame_rendering = True
 
     elif modules.menu.selected_button == 1 and ord(pressed_key) == Chars.enter:
+        modules.render.skip_next_frame_rendering = False
+
         modules.render.flushFrame()  # New game button.
         termios.tcflush(sys.stdin, termios.TCIOFLUSH)  # Flush input buffer.
         return 1
