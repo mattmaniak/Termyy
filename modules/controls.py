@@ -42,30 +42,40 @@ def game_event(pressed_key):
     if pressed_key in Chars.w:
         if modules.render.Player.y <= 0:
             modules.render.Player.y = 0
+            modules.render.skip_next_frame_rendering = True
         else:
             modules.render.Player.y -= 1
+            modules.render.skip_next_frame_rendering = False
 
     elif pressed_key in Chars.s:
         if modules.render.Player.y >= modules.render.Map.height \
                 - modules.render.Player.height:
             modules.render.Player.y = modules.render.Map.height \
                                       - modules.render.Player.height
+
+            modules.render.skip_next_frame_rendering = True
         else:
             modules.render.Player.y += 1
+            modules.render.skip_next_frame_rendering = False
 
     elif pressed_key in Chars.a:
         if modules.render.Player.x <= 0:
             modules.render.Player.x = 0
+            modules.render.skip_next_frame_rendering = True
         else:
             modules.render.Player.x -= 1
+            modules.render.skip_next_frame_rendering = False
 
     elif pressed_key in Chars.d:
         if modules.render.Player.x >= modules.render.Map.width \
                                       - modules.render.Player.width:
             modules.render.Player.x = modules.render.Map.width \
                                       - modules.render.Player.width
+
+            modules.render.skip_next_frame_rendering = True
         else:
             modules.render.Player.x += 1
+            modules.render.skip_next_frame_rendering = False
 
     elif pressed_key in Chars.capital_p:  # Exit key.
         modules.render.flushFrame()

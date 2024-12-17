@@ -3,6 +3,8 @@ import sys
 
 import modules.gui
 
+skip_next_frame_rendering = False
+
 
 # Namespaces for the most important elements.
 class Player:
@@ -82,24 +84,30 @@ class Fill:
     def lower():
         Center("horizontal", ' ')
         modules.gui.horizontal_border('+')
+
         Center("horizontal", ' ')
         Fill.vertically()
 
 
-def window(x, y):  # Main window of the game.
+# Main window of the game.
+def display_window(x, y):
     Fill.upper()
 
     # Player positioning in Y axis:
-    for y in range(Player.y):  # Amount of X axes to render above him.
+    for y in range(Player.y):
+        # Amount of X axes to render above him.
         empty_line()
 
     # Player positioning in X axis and rendering:
     for y in range(Player.height):
         Center("horizontal", ' ')
 
-        sys.stdout.write('|')  # Left border.
+        # Left border.
+        sys.stdout.write('|')
+
         for x in range(Player.x):
-            sys.stdout.write(' ')  # Spaces without newlines as positioning.
+            # Spaces without newlines as positioning.
+            sys.stdout.write(' ')
 
         modules.gui.Model(modules.gui.Color.yellow + Player.model
                           + modules.gui.Color.reset,

@@ -19,12 +19,16 @@ def game(mode):
 
 def round():
     while True:
-        modules.render.window(modules.render.Player.x, modules.render.Player.y)
+        if not modules.render.skip_next_frame_rendering:
+            modules.render.display_window(modules.render.Player.x,
+                                          modules.render.Player.y)
 
         if modules.controls.key_event(modules.state.Screens.GAMEPLAY):
             while True:
                 game(modules.state.Screens.PAUSE_MENU)
-        modules.render.flushFrame()
+
+        if not modules.render.skip_next_frame_rendering:
+            modules.render.flushFrame()
 
 
 if __name__ == "__main__":
