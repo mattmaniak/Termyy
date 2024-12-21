@@ -8,7 +8,7 @@ import modules.menu
 import modules.render
 
 
-def game(mode):
+def main_loop(mode):
     while True:
         if not modules.render.skip_next_frame_rendering:
             modules.menu.welcome(mode)
@@ -28,7 +28,7 @@ def round():
 
         if modules.controls.key_event(modules.state.Screens.GAMEPLAY):
             while True:
-                game(modules.state.Screens.PAUSE_MENU)
+                main_loop(modules.state.Screens.PAUSE_MENU)
 
         if not modules.render.skip_next_frame_rendering:
             modules.render.flushFrame()
@@ -39,6 +39,6 @@ if __name__ == "__main__":
         sys.stderr.write("Your OS is not supported!\n")
         exit(1)
 
-    game(modules.state.Screens.MAIN_MENU)
+    main_loop(modules.state.Screens.MAIN_MENU)
 else:
     sys.stderr.write("Do not import this file as a module. Run it directly.\n")
