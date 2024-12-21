@@ -76,7 +76,8 @@ def welcome(mode):
 
     elif mode == modules.state.Screens.PAUSE_MENU:
         modules.render.empty_line()
-        Button(selected_button, "               Game paused! ", infobox_width,
+        Button(selected_button, "Game paused!".rjust(quote_frame_width, ' '),
+               infobox_width,
                modules.render.Window.
                count_centered_object_vertical_padding(infobox_width))
 
