@@ -64,8 +64,11 @@ def welcome(mode):
         modules.render.empty_line()
 
     if mode == modules.state.Screens.MAIN_MENU:
-        Button(0, "Termyy", len("Termyy"),
-               int(modules.render.Map.width / 2) - int(len("Termyy") / 2))
+        logo_text = "Termyy"
+
+        Button(0, logo_text, len(logo_text),
+               modules.render.Window.
+               count_centered_object_vertical_padding(len(logo_text)))
 
         Button(selected_button, quote_frame, infobox_width,
                modules.render.Window.
